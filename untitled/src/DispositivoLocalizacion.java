@@ -3,7 +3,7 @@ public class DispositivoLocalizacion {
     //atributos
     private int codigo;
     private String estado;
-    private Ubicacion[] ubicaciones;
+    private Ubicacion[] ubicaciones;  // en este atributo se utiliza para que ingresen varias ubicaciones y no solamente una
     private int cantidadUbicaciones;
 
 
@@ -54,6 +54,7 @@ public class DispositivoLocalizacion {
         this.cantidadUbicaciones = cantidadUbicaciones;
     }
 
+    //este metodo funcioina como auxiliar para poder agregar mas de una ubicacion al registro
     public void agregarUbicacion(Ubicacion u){
         if (cantidadUbicaciones < ubicaciones.length){
             ubicaciones[cantidadUbicaciones] = u;
