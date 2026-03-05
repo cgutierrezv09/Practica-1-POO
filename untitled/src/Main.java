@@ -22,7 +22,7 @@ public class Main {
         String estado=entrada.readLine();
 
 
-        Mascota mascota=new Mascota(identificador,nombre,especie,estado,null);
+        Mascota mascota=new Mascota(identificador,nombre,especie,estado);
         controlSistema.agregarMascota(mascota);
 
 

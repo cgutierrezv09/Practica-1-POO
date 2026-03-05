@@ -10,7 +10,7 @@ public class Mascota {
 
     //constructor
 
-    public Mascota(int identificadorUnico, String nombre, String especie, String estado, DispositivoLocalizacion dispositivo) {
+    public Mascota(int identificadorUnico, String nombre, String especie, String estado) {
         this.identificadorUnico = identificadorUnico;
         this.nombre = nombre;
         this.especie = especie;
