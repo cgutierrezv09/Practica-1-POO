@@ -1,15 +1,18 @@
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class Ubicacion {
 
     //Atributos
     private int identificador;
-    private String fecha;
-    private String hora;
+    private LocalDate fecha;
+    private LocalTime hora;
     private String infoUbicacion;
 
 
     //constructor
 
-    public Ubicacion(int identificador, String fecha, String hora, String infoUbicacion) {
+    public Ubicacion(int identificador, LocalDate fecha,LocalTime hora, String infoUbicacion) {
         this.identificador = identificador;
         this.fecha = fecha;
         this.hora = hora;
@@ -24,11 +27,11 @@ public class Ubicacion {
         return identificador;
     }
 
-    public String getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public String getHora() {
+    public LocalTime getHora() {
         return hora;
     }
 
@@ -43,11 +46,11 @@ public class Ubicacion {
         this.identificador = identificador;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
-    public void setHora(String hora) {
+    public void setHora(LocalTime hora) {
         this.hora = hora;
     }
 

@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Main {
@@ -118,11 +120,11 @@ public class Main {
             System.out.println("Ingrese un identificador");
             int identificador=Integer.parseInt(entrada.readLine());
 
-            System.out.println("Ingrese la fecha ");
-            String fecha=entrada.readLine();
+            System.out.println("Ingrese la fecha AAAA-MM-DD");
+            LocalDate fecha=LocalDate.parse(entrada.readLine());
 
-            System.out.println("Ingrese la hora ");
-            String hora=entrada.readLine();
+            System.out.println("Ingrese la hora HH:mm ");
+            LocalTime hora=LocalTime.parse(entrada.readLine());
 
             System.out.println("Ingrese la ubicacion");
             String ubi=entrada.readLine();
