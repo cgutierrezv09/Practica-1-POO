@@ -1,13 +1,54 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class Main {
     public static BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
+    static ArrayList  <Mascota> mascotas;
 
+    //este metodo busca la mascota en base al identificador
+    public static Mascota buscarMascota(int identificadorBuscar){
+
+        for (Mascota m : mascotas){
+            if (m.getIdentificadorUnico() == identificadorBuscar){
+                return m;
+            }
+        }
+
+        return null;
+    }
+
+    //este metodo agrega una mascota verificando que el identificador no sea igual que otro
+
+    public static void agregarMascota(Mascota mascota){
+
+        if (buscarMascota(mascota.getIdentificadorUnico()) != null){
+            System.out.println("Ya existe una mascota con ese identificador");
+            return;
+        }
+
+        mascotas.add(mascota);
+        System.out.println("Mascota agregada correctamente");
+    }
+
+    //este metodo busca el codigo del dispositivo para crear una ubicacion
+    public static DispositivoLocalizacion buscarCodigo(int codigoBuscar){
+
+        for (Mascota m : mascotas){
+
+            if (m.getDispositivo() != null &&
+                    m.getDispositivo().getCodigo() == codigoBuscar){
+
+                return m.getDispositivo();
+            }
+        }
+
+        return null;
+    }
 
     //Metodos para registrar una mascota
-    public static void registrarMascota(ControlSistema controlSistema) throws IOException{
+    public static void registrarMascota() throws IOException{
 
         System.out.println("Ingrese un identificador para su mascota ");
         int identificador=Integer.parseInt(entrada.readLine());
@@ -23,19 +64,19 @@ public class Main {
 
 
         Mascota mascota=new Mascota(identificador,nombre,especie,estado);
-        controlSistema.agregarMascota(mascota);
+        agregarMascota(mascota);
 
 
 
     }
 
 
-    public static void asociacionDispositivo(ControlSistema controlSistema) throws IOException {
+    public static void asociacionDispositivo() throws IOException {
 
         System.out.println("Ingrese el identificador de su mascota ");
         int identificador = Integer.parseInt(entrada.readLine());
 
-        Mascota mascota = controlSistema.buscarMascota(identificador);
+        Mascota mascota = buscarMascota(identificador);
 
         if (mascota == null) {
             System.out.println("No se encontro ninguna mascota con ese identificador");
@@ -50,7 +91,7 @@ public class Main {
         System.out.println("Ingrese un codigo para su dispositivo");
         int codigo = Integer.parseInt(entrada.readLine());
 
-        if (controlSistema.buscarCodigo(codigo) != null) {
+        if (buscarCodigo(codigo) != null) {
             System.out.println("Ya existe un dispositivo con ese codigo");
             return;
         }
@@ -64,12 +105,12 @@ public class Main {
         System.out.println("Dispositivo asociado correctamente");
     }
 
-    public static void registroUbicacion(ControlSistema controlSistema)throws IOException{
+    public static void registroUbicacion()throws IOException{
 
         System.out.println("Ingrese el codigo de su dispositivo");
         int codigo=Integer.parseInt(entrada.readLine());
 
-        DispositivoLocalizacion dispositivoLocalizacion=controlSistema.buscarCodigo(codigo);
+        DispositivoLocalizacion dispositivoLocalizacion=buscarCodigo(codigo);
         if (dispositivoLocalizacion==null){
             System.out.println("No se encontro ningun dispositivo con ese codigo");
         }else {
@@ -92,13 +133,13 @@ public class Main {
 
     }
 
-    public static void consultarInfo(ControlSistema controlSistema)throws IOException{
+    public static void consultarInfo()throws IOException{
 
         System.out.println("Ingrese el idenficador de su mascota ");
         int identficador=Integer.parseInt(entrada.readLine());
 
 
-        Mascota mascota=controlSistema.buscarMascota(identficador);
+        Mascota mascota=buscarMascota(identficador);
         if (mascota==null){
             System.out.println("No se encontro ninguna mascota con el identificador");
             return;
@@ -138,7 +179,7 @@ public class Main {
     }
     public static void main(String[] args)throws IOException {
 
-        ControlSistema controlSistema=new ControlSistema(50);
+        mascotas = new ArrayList<>();
         int opcion;
 
         do {
@@ -154,18 +195,18 @@ public class Main {
 
             switch (opcion){
                 case 1:
-                    registrarMascota(controlSistema);
+                    registrarMascota();
                     break;
 
                 case 2:
-                    asociacionDispositivo(controlSistema);
+                    asociacionDispositivo();
                     break;
 
                 case 3:
-                    registroUbicacion(controlSistema);
+                    registroUbicacion();
                     break;
                 case 4:
-                    consultarInfo(controlSistema);
+                    consultarInfo();
                     break;
 
                 case 5:
