@@ -73,6 +73,7 @@ public class Main {
     }
 
 
+    //metodo para hacer la asociacion de un dispositivo
     public static void asociacionDispositivo() throws IOException {
 
         System.out.println("Ingrese el identificador de su mascota ");
@@ -107,6 +108,7 @@ public class Main {
         System.out.println("Dispositivo asociado correctamente");
     }
 
+    //metodo para hacer el registro de la ubicacion
     public static void registroUbicacion()throws IOException{
 
         System.out.println("Ingrese el codigo de su dispositivo");
@@ -135,6 +137,7 @@ public class Main {
 
     }
 
+    //metodo para consultar la info de la mascota
     public static void consultarInfo()throws IOException{
 
         System.out.println("Ingrese el idenficador de su mascota ");
